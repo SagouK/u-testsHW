@@ -33,25 +33,31 @@ class AverageNumber:
 
 
 class TestLists:
-    def test_find_avg(self):
+    @staticmethod
+    def test_find_avg():
         assert AverageNumber.find_avg([1, 2, 3], [4, 5, 6]) == (2, 5), \
             'Ожидаемое не сошлось с фактическим'
         assert AverageNumber.find_avg([5], [3]) == (5, 3)
         assert AverageNumber.find_avg([5, 8], [4, 3, 2]) == (6.5, 3)
 
-    def test_zero(self):
+    @staticmethod
+    def test_zero():
         assert AverageNumber.find_avg([], []) == 0
         assert AverageNumber.find_avg([], [2, 5]) == 0
+        assert AverageNumber.find_avg([2, 5], []) == 0
 
-    def test_negative(self):
+    @staticmethod
+    def test_negative():
         assert AverageNumber.find_avg([-1, -2, -3], [-4, -5, -6]) == (-2, -5)
 
-    def test_find_avg_type(self):
+    @staticmethod
+    def test_find_avg_type():
         with pytest.raises(TypeError):
             AverageNumber.find_avg('qwe', 1)
             # AverageNumber.find_avg([1, 3], [2, 3])
 
-    def test_compares(self):
+    @staticmethod
+    def test_compares():
         assert AverageNumber.compare_args((3, 3)) == 'Средние значения равны'
         assert AverageNumber.compare_args((4, 3)) == 'Первый список имеет большее среднее значение'
         assert AverageNumber.compare_args((3, 7)) == 'Второй список имеет большее среднее значение'
@@ -59,3 +65,11 @@ class TestLists:
 
 if __name__ == '__main__':
     print(AverageNumber.compare_args(AverageNumber.find_avg([3, 9, 5], [4, 19])))
+    TestLists.test_zero()
+    TestLists.test_compares()
+    TestLists.test_negative()
+    TestLists.test_find_avg()
+    TestLists.test_find_avg_type()
+
+
+
